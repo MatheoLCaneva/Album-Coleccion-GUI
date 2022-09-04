@@ -23,6 +23,9 @@ def main(*args):
     _w1 = menuAgregar.Toplevel1(_top1)
     root.mainloop()
 
+def cerrar(): 
+    root.destroy()
+
 if __name__ == '__main__':
     menuAgregar.start_up()
 

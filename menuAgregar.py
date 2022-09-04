@@ -129,13 +129,14 @@ class Toplevel1:
         self.btnAgregar.configure(takefocus="")
         self.btnAgregar.configure(text='''Agregar''')
         self.btnAgregar.configure(compound='left')
-        self.btnAgregar.configure(command=self.mostrar)
+        self.btnAgregar.configure(command=self.guardar)
 
         self.btnSalir = ttk.Button(self.TFrame1)
         self.btnSalir.place(relx=0.557, rely=0.727, height=45, width=106)
         self.btnSalir.configure(takefocus="")
         self.btnSalir.configure(text='''Salir''')
         self.btnSalir.configure(compound='left')
+        self.btnSalir.configure(command=menuAgregar_support.cerrar)
 
         self.TLabel1 = ttk.Label(self.top)
         self.TLabel1.place(relx=0.0, rely=0.0, height=59, width=595)
@@ -148,9 +149,9 @@ class Toplevel1:
         self.TLabel1.configure(text='''Agregar Figurita''')
         self.TLabel1.configure(compound='left')
 
-        
-      def mostrar(self):
-         administrador.printear(self.TEntry1.get())
+      def guardar(self):
+         administrador.mandarMensaje(self.TEntry1.get(), self.TEntry2.get(), self.TEntry3.get())
+
 
 def start_up():
     menuAgregar_support.main()

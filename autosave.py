@@ -56,7 +56,7 @@ class Main:
       def __init__(self, top=None):
         '''This class configures and populates the toplevel window.
            top is the toplevel containing window.'''
-        self.root = Tkinter.tk() 
+
         top.geometry("651x553+656+215")
         top.minsize(120, 1)
         top.maxsize(1924, 1061)
@@ -103,14 +103,11 @@ class Main:
         self.btnChequear.configure(compound='left')
 
       def openAdd(self):
+         autosave_support.cerrar()
          menuAgregar.start_up()
 
-
-def start_up():
-   autosave_support.main()
-
 if __name__ == '__main__':
-   root = autosave_support.main()
+   autosave_support.main()
 
 
 

@@ -27,7 +27,9 @@ def main(*args):
     global _top2, _w2
     _top2 = tk.Toplevel(root)
     root.mainloop()
-    return root
+
+def cerrar(): 
+    root.destroy()
 
 def print(*args):
     print('autosave_support.print')
