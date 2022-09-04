@@ -17,6 +17,7 @@ _location = os.path.dirname(_script)
 
 import autosave_support
 import menuAgregar
+import comprobar
 
 _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
 _fgcolor = '#000000'  # X11 color: 'black'
@@ -101,10 +102,18 @@ class Main:
         self.btnChequear.configure(takefocus="")
         self.btnChequear.configure(text='''Comprobar Figurita''')
         self.btnChequear.configure(compound='left')
+        self.btnChequear.configure(command=self.openCheck)
 
       def openAdd(self):
          autosave_support.cerrar()
          menuAgregar.start_up()
+
+      def openCheck(self):
+         autosave_support.cerrar()
+         comprobar.start_up()
+
+def start_up():
+    autosave_support.main()
 
 if __name__ == '__main__':
    autosave_support.main()

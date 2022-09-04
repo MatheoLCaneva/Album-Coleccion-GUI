@@ -8,6 +8,7 @@
 import sys
 import tkinter as tk
 import tkinter.ttk as ttk
+from tkinter import messagebox
 from tkinter.constants import *
 import os.path
 
@@ -16,6 +17,7 @@ _location = os.path.dirname(_script)
 
 import menuAgregar_support
 import administrador
+import autosave
 
 _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
 _fgcolor = '#000000'  # X11 color: 'black'
@@ -136,7 +138,7 @@ class Toplevel1:
         self.btnSalir.configure(takefocus="")
         self.btnSalir.configure(text='''Salir''')
         self.btnSalir.configure(compound='left')
-        self.btnSalir.configure(command=menuAgregar_support.cerrar)
+        self.btnSalir.configure(command=self.openMain)
 
         self.TLabel1 = ttk.Label(self.top)
         self.TLabel1.place(relx=0.0, rely=0.0, height=59, width=595)
@@ -150,7 +152,16 @@ class Toplevel1:
         self.TLabel1.configure(compound='left')
 
       def guardar(self):
+         administrador.almacenar(self.TEntry1.get(), self.TEntry2.get(), self.TEntry3.get())
          administrador.mandarMensaje(self.TEntry1.get(), self.TEntry2.get(), self.TEntry3.get())
+         self.TEntry1.delete(0, END)
+         self.TEntry2.delete(0, END)
+         self.TEntry3.delete(0, END)
+         messagebox.showinfo('Información', 'Figurita agregada correctamente')
+
+      def openMain(self):
+         menuAgregar_support.cerrar()
+         autosave.start_up()
 
 
 def start_up():

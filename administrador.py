@@ -9,9 +9,18 @@ def mandarMensaje(a, b, c):
 
 
 def almacenar(Nombre, Apellido, Codigo):
-    obj = {"Nombre": "{}", "Apellido": "{}", "Codigo": "{}".format(Nombre, Apellido, Codigo)}
+    obj = [Nombre, Apellido, Codigo]
 
     with open(r'C:\Users\Matheo\Desktop\testTk\Album-Coleccion-GUI/test.csv', "a", newline='') as file:
         writer = csv.writer(file, delimiter=',')
-        values = list(obj.values())
-        writer.writerow(values)
+        writer.writerow(obj)
+
+
+def buscar(Codigo):
+    condicion = False
+    with open(r'C:\Users\Matheo\Desktop\testTk\Album-Coleccion-GUI/test.csv') as file:
+        reader = csv.reader(file, delimiter=',')
+        for row in reader:
+            if row[2] == Codigo:
+                condicion = True
+    return condicion
